@@ -1,13 +1,16 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { StyleSheet } from 'react-native';
-import LoginScreen from '_scenes/login';
+import AuthNavigator from '_navigations';
 
 export default function App() {
   return (
     <NativeBaseProvider>
       <StatusBar style="auto" />
-      <LoginScreen/>
+      <NavigationContainer>
+        <AuthNavigator />
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
