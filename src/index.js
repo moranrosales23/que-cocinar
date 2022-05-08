@@ -2,14 +2,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { StyleSheet } from 'react-native';
-import AuthNavigator from '_navigations';
+import InitialNavigator from '_navigations';
 
 export default function App() {
   return (
     <NativeBaseProvider>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <AuthNavigator />
+        <InitialNavigator />
       </NavigationContainer>
     </NativeBaseProvider>
   );
