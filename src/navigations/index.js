@@ -1,8 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Button } from 'native-base';
-import { Alert } from 'react-native';
 import InitialScreen from '_scenes/initial';
 import RegisterScreen from '_scenes/register';
+import MainScreen from '_scenes/main';
 
 const Stack = createStackNavigator();
 
@@ -16,12 +15,12 @@ const InitialNavigator = () => {
         name="Register"
         component={RegisterScreen}
         options={{
-          title: 'Register',
-          headerRight: () => (
-            <Button onPress={() => Alert.alert('This is a button!')} title="Info" color="#fff" />
-          ),
+          title: 'Registro de usuario',
         }}
       />
+      <Stack.Group screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Main" component={MainScreen} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };

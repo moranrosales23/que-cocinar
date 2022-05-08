@@ -1,6 +1,7 @@
-import { Box, Button, Flex, FormControl, Image, Input, ScrollView } from 'native-base';
-import logo from '_assets/images/logo.png';
+import { Box, Button, Flex, Image, ScrollView } from 'native-base';
 import bandera from '_assets/images/bandera.png';
+import Logo from '_atoms/logo';
+import FrmLogin from '_molecules/forms/login';
 
 const InitialScreen = ({ navigation }) => {
   return (
@@ -13,20 +14,13 @@ const InitialScreen = ({ navigation }) => {
         <Image source={bandera} alt="bandera" resizeMode={'contain'} width="100%" />
 
         <Box>
-          <Image source={logo} height="44%" alt="Logo de la aplicación" resizeMode={'contain'} />
+          <Logo height="44%" />
           <Box ml="4" mr="4" mt="4">
-            <FormControl isRequired mb="4">
-              <FormControl.Label>Email</FormControl.Label>
-              <Input type="email" />
-            </FormControl>
-            <FormControl isRequired>
-              <FormControl.Label>Password</FormControl.Label>
-              <Input type="password" />
-            </FormControl>
+            <FrmLogin />
           </Box>
         </Box>
         <Box ml="4" mr="4" mb="4">
-          <Button size="md" mb="4" bg="#1C3940">
+          <Button size="md" mb="4" bg="#1C3940" onPress={() => navigation.navigate('Main')}>
             Ingresar
           </Button>
           <Button
