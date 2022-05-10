@@ -1,5 +1,10 @@
+import Search from '_molecules/search/search';
+
+
 const Recipes = () => {
-  return <></>;
+  return (
+    <Search />
+  );
 };
 
 export default Recipes;
