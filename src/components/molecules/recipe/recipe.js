@@ -1,10 +1,21 @@
-import { AspectRatio, Box, Center, Flex, Heading, HStack, Image, Stack, Text } from 'native-base';
+import { Flex, Heading, Image, Text } from 'native-base';
+import RecipeSkeleton from '_molecules/skeleton/recipe/recipe';
 
 const recipe = () => {
   return (
     <>
-      <Flex>
-        <Heading size="md" ml="-1">
+      <Flex
+        borderWidth="1"
+        borderColor="gray.200"
+        px="2"
+        py="2"
+        marginTop="3"
+        bg="white"
+        borderRadius="10"
+        ml="2"
+        mr="2"
+      >
+        <Heading size="sm" mb="2">
           The Garden City
         </Heading>
 
@@ -14,11 +25,13 @@ const recipe = () => {
           }}
           alt="image"
           width="100%"
-          height="150"
-          resizeMode={'contain'}
+          height="130"
+          mb="2"
         />
+        <Text>holi</Text>
       </Flex>
-      <Box alignItems="center">
+      <RecipeSkeleton />
+      {/*<Box alignItems="center">
         <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1">
           <Box>
             <Heading size="md" ml="-1">
@@ -75,7 +88,7 @@ const recipe = () => {
             </HStack>
           </Stack>
         </Box>
-      </Box>
+                </Box>*/}
     </>
   );
 };
