@@ -3,7 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const search = () => {
   return (
-    <VStack w="100%" marginTop="8" bg="gray.100" p="2" shadow="3">
+    <VStack w="100%" marginTop="8" bg="gray.100" p="2" shadow="0">
       <Heading fontSize="lg">¿Qué te provoca?</Heading>
       <Center mt="2">
         <Input
