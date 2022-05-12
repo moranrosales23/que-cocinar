@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import InitialScreen from '_scenes/initial';
 import RegisterScreen from '_scenes/register';
 import MainScreen from '_scenes/main';
+import RecipeScreen from '_scenes/recipe';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const InitialNavigator = () => {
       <Stack.Group screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Main" component={MainScreen} />
       </Stack.Group>
+      <Stack.Screen name="RepiceDTL" component={RecipeScreen} />
     </Stack.Navigator>
   );
 };

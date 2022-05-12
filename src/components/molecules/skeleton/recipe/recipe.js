@@ -1,4 +1,4 @@
-import { Center, Flex, HStack, Skeleton, VStack } from 'native-base';
+import { Flex, Skeleton } from 'native-base';
 
 const RecipeSkeleton = () => {
   return (
