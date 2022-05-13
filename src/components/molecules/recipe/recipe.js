@@ -46,9 +46,17 @@ const recipe = ({ navigation }) => {
             height="130"
             mb="2"
           />
-          <Button width="10" bg="transparent" position="absolute" right="0" height="10">
+          <Pressable
+            width="10"
+            position="absolute"
+            right="0"
+            height="10"
+            onPress={() => {
+              console.log('te bailo sabroso');
+            }}
+          >
             <Icon as={MaterialIcons} name="favorite" color="gray.300" size={6} />
-          </Button>
+          </Pressable>
         </Box>
 
         <Box display="flex" flexDirection="row" height="6">
