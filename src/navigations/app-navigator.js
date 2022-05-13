@@ -1,6 +1,7 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Recipes from '_organisms/recipes';
+import Profile from '_scenes/profile';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -37,7 +38,7 @@ const AppNavigator = () => {
       />
       <Tab.Screen
         name="Homed"
-        component={Recipes}
+        component={Profile}
         options={{
           tabBarLabel: 'Perfil',
           tabBarIcon: ({ color }) => <MaterialIcons name="person" color={color} size={26} />,
