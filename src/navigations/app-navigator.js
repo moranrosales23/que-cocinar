@@ -2,6 +2,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Recipes from '_organisms/recipes';
 import Profile from '_scenes/profile';
+import Ingredients from '_scenes/ingredients';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -21,7 +22,7 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Homes"
+        name="favorite"
         component={Recipes}
         options={{
           tabBarLabel: 'Favoritos',
@@ -29,15 +30,15 @@ const AppNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Homea"
-        component={Recipes}
+        name="ingredients"
+        component={Ingredients}
         options={{
           tabBarLabel: 'Ingredientes',
           tabBarIcon: ({ color }) => <MaterialIcons name="ballot" color={color} size={26} />,
         }}
       />
       <Tab.Screen
-        name="Homed"
+        name="profile"
         component={Profile}
         options={{
           tabBarLabel: 'Perfil',
