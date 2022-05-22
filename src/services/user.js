@@ -1,6 +1,8 @@
 import API from './base';
 
-const register = (user) => API.post('auth/register', user);
+const register = (user) => {
+  return API.post('auth/register', user);
+};
 
 const login = (credentials) => API.post('auth', credentials);
 
