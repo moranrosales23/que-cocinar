@@ -1,6 +1,7 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Recipes from '_organisms/recipes';
+import Favorites from '_organisms/favorites';
 import Profile from '_scenes/profile';
 import Ingredients from '_scenes/ingredients';
 
@@ -23,7 +24,7 @@ const AppNavigator = () => {
       />
       <Tab.Screen
         name="favorite"
-        component={Recipes}
+        component={Favorites}
         options={{
           tabBarLabel: 'Favoritos',
           tabBarIcon: ({ color }) => <MaterialIcons name="favorite" color={color} size={26} />,

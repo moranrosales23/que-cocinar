@@ -1,13 +1,36 @@
 import { Box, Heading, Icon, Image, Pressable, Text, useToast } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { useDispatch, useSelector } from 'react-redux';
 import { RECIPE } from '_services';
 import ErrorAxios from '_utils/error';
+import { setFavorite as setFav } from '../../../store/slices/user';
+import { updateFavorite } from '../../../store/slices/recipes';
 
-const recipe = ({ navigation, id, name, category, img, rate }) => {
+const recipe = ({ navigation, id, name, category, img, isFavorite, rate }) => {
   const toast = useToast();
+  const { recipes } = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
+
+  const resetFav = (favorites = []) => {
+    return recipes.map((recipe) => {
+      const nrecip = { ...recipe };
+      nrecip.isFavorite = false;
+      for (const fav of favorites) {
+        if (fav.recipe === nrecip._id) {
+          nrecip.isFavorite = true;
+          break;
+        }
+      }
+      return nrecip;
+    });
+  };
+
   const setFavorite = async () => {
     try {
-      const favorite = await RECIPE.setFavorite(id);
+      let favorite = await RECIPE.setFavorite(id);
+      dispatch(setFav(favorite.data.data));
+      const resetRecipe = resetFav(favorite.data.data);
+      dispatch(updateFavorite(resetRecipe));
     } catch (error) {
       const err = ErrorAxios(error);
       toast.show({ title: err.error, placement: 'top' });
@@ -48,11 +71,14 @@ const recipe = ({ navigation, id, name, category, img, rate }) => {
             right="0"
             height="6"
             bg="white"
-            onPress={() => {
-              console.log('te bailo sabroso');
-            }}
+            onPress={setFavorite}
           >
-            <Icon as={MaterialIcons} name="favorite" color="gray.500" size={6} />
+            <Icon
+              as={MaterialIcons}
+              name="favorite"
+              color={isFavorite ? 'amber.600' : 'gray.500'}
+              size={6}
+            />
           </Pressable>
         </Box>
 

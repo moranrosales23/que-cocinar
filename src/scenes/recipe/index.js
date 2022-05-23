@@ -8,6 +8,7 @@ const RecipeScreen = ({ route }) => {
   const { id } = route.params;
   const [recipe, setRecipe] = useState({});
   const toast = useToast();
+
   useEffect(async () => {
     try {
       const recipes = await RECIPE.find(id);

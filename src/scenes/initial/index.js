@@ -4,17 +4,23 @@ import bandera from '_assets/images/bandera.png';
 import Logo from '_atoms/logo';
 import FrmLogin from '_molecules/forms/login';
 import ErrorAxios from '_utils/error';
+import { loadProfile } from '../../store/slices/user';
 import { USER } from '_services';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
 
 const InitialScreen = ({ navigation }) => {
   const [frm, setFrm] = useState({ email: '', password: '', success: false });
+  const dispatch = useDispatch();
   const toast = useToast();
 
   const login = async () => {
     try {
       const user = await USER.login(frm);
-      AsyncStorage.setItem('@tk', user.data.data);
+      await AsyncStorage.setItem('tk_que_cocinar', user.data.data.tk);
+      dispatch(loadProfile(user.data.data));
+      console.log('****');
+      console.log(user.data.data.tk, 'token');
       navigation.navigate('Main');
     } catch (error) {
       const err = ErrorAxios(error);

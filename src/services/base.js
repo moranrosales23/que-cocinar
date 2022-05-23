@@ -7,7 +7,8 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    const tk = AsyncStorage.getItem('@tk');
+    const tk = await AsyncStorage.getItem('tk_que_cocinar');
+    console.log(tk, 'interceptor');
     config.headers = {
       Authorization: `Bearer ${tk}`,
       Accept: 'application/json',
