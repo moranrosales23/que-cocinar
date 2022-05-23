@@ -28,10 +28,10 @@ const userSlice = createSlice({
       };
     },
     setFavorite: (state, action) => ({ ...state, favorites: action.payload }),
-    addIngredient: (state, action) => ({ ...state, ingredients: action.payload }),
+    setIngredient: (state, action) => ({ ...state, ingredients: action.payload }),
   },
 });
 
-export const { loadProfile, setFavorite } = userSlice.actions;
+export const { loadProfile, setFavorite, setIngredient } = userSlice.actions;
 
 export default userSlice.reducer;

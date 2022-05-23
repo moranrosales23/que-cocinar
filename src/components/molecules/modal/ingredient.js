@@ -5,11 +5,12 @@ const ingredient = ({ showModal, setShowModal, save, initial }) => {
   const [description, setdescription] = useState(initial);
 
   const handleInputChange = (text) => {
-    setdescription({ ...description, descripcion: text });
+    setdescription({ ...description, description: text });
   };
 
   const handleButtonPress = () => {
-    save(description);
+    save(description, description._id !== undefined);
+    setdescription('');
   };
 
   return (
@@ -20,7 +21,7 @@ const ingredient = ({ showModal, setShowModal, save, initial }) => {
         <Modal.Body>
           <FormControl>
             <FormControl.Label>Ingrediente:</FormControl.Label>
-            <Input onChangeText={handleInputChange} />
+            <Input onChangeText={handleInputChange} value={description.description} />
           </FormControl>
         </Modal.Body>
         <Modal.Footer>
