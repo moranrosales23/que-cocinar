@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   name: '',
   lastname: '',
-  alias: '',
+  nickname: '',
   img: '',
   favorites: [],
   ingredients: [],
@@ -15,13 +15,13 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loadProfile: (state, action) => {
-      const { name, lastname, img, alias, favorites, ingredients, complete_perfil } =
+      const { name, lastname, img, nickname, favorites, ingredients, complete_perfil } =
         action.payload;
       return {
         name,
         lastname,
         img,
-        alias,
+        nickname,
         favorites,
         ingredients,
         complete_perfil,
@@ -29,9 +29,12 @@ const userSlice = createSlice({
     },
     setFavorite: (state, action) => ({ ...state, favorites: action.payload }),
     setIngredient: (state, action) => ({ ...state, ingredients: action.payload }),
+    updateProfile: (state, action) => ({ ...state, ...action.payload }),
+    setImage: (state, action) => ({ ...state, img: action.payload }),
   },
 });
 
-export const { loadProfile, setFavorite, setIngredient } = userSlice.actions;
+export const { loadProfile, setFavorite, setIngredient, updateProfile, setImage } =
+  userSlice.actions;
 
 export default userSlice.reducer;

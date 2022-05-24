@@ -80,24 +80,7 @@ const validate = (fields, values) => {
       }
     }
   }
-  /*keys.forEach((key, index) => {
-    let { alias, rules, comp, alias_comp, message } = value[index];
-    rules = rules.split('|');
-    for (const rule of rules) {
-      let error = {};
-      const [criterio, number] = rule.split(':');
-      if (rule === 'equals') {
-        error[key] = validations[rule](values[key], values[comp], message, alias, alias_comp);
-      } else if (['minLength', 'maxLength', 'exactLength'].includes(criterio)) {
-        error[key] = validations[rule](values[key], parseInt(number), alias, message);
-      } else error[key] = validations[rule](values[key], alias, message);
-      console.log(error);
-      if (err.err) {
-        errors[key] = error;
-        break;
-      }
-    }
-  });*/
+
   return errors;
 };
 
