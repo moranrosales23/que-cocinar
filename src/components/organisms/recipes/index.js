@@ -29,6 +29,10 @@ const Recipes = ({ navigation }) => {
     });
   };
 
+  const searchRecipe = (text) => {
+    console.log(text);
+  };
+
   useEffect(async () => {
     try {
       setloading(true);
@@ -47,7 +51,7 @@ const Recipes = ({ navigation }) => {
 
   return (
     <>
-      <Search />
+      <Search change={searchRecipe} />
       <ScrollView>
         {loading && number_skeleton.map((number) => <RecipeSkeleton key={number} />)}
         {!loading &&

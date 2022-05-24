@@ -56,24 +56,30 @@ const FrmProfile = () => {
       const pickerResult = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
       });
-      console.log(pickerResult);
       if (!pickerResult.cancelled) {
         const img_user = await USER.setIMG(pickerResult.uri);
+        toast.show({ title: img_user.data.message });
         setfrm({ ...frm, img: pickerResult.uri });
       }
-    } catch (error) {}
+    } catch (error) {
+      const err = ErrorAxios(error);
+      toast.show({ title: err.error, placement: 'top' });
+    }
   };
 
   return (
     <>
       <ScrollView>
-        <Box position="relative">
-          <Image
-            source={frm.img === '' ? NOT_IMAGE : { uri: frm.img }}
-            height="40"
-            alt="profile"
-            resizeMode={'contain'}
-          />
+        <Box position="relative" mt="4">
+          <Center mt="4">
+            <Image
+              source={frm.img === '' ? NOT_IMAGE : { uri: frm.img }}
+              height="40"
+              width="40"
+              alt="profile"
+              borderRadius={100}
+            />
+          </Center>
           <Pressable
             borderRadius="50"
             width="10"

@@ -1,7 +1,7 @@
 import { Center, Heading, Icon, Input, VStack } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 
-const search = () => {
+const search = ({ change }) => {
   return (
     <VStack w="100%" marginTop="8" bg="gray.100" p="2" shadow="0">
       <Heading fontSize="lg">¿Qué te provoca?</Heading>
@@ -16,6 +16,7 @@ const search = () => {
           InputLeftElement={
             <Icon ml="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />
           }
+          onChangeText={(text) => change(text)}
         />
       </Center>
     </VStack>

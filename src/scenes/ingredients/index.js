@@ -1,6 +1,5 @@
-import { Box, Divider, Flex, IconButton, Text, useToast } from 'native-base';
+import { Box, Divider, Heading, IconButton, useToast } from 'native-base';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Search from '_molecules/search/search';
 import IngredientModal from '_molecules/modal/ingredient';
 import { useState } from 'react';
 import { INGREDIENTS } from '_services';
@@ -50,7 +49,18 @@ const IngredientsScreen = () => {
   return (
     <>
       <Box px="4" position="relative" height="95%">
-        <Search />
+        <Heading
+          size="md"
+          mt="4"
+          mb="4"
+          bg="white"
+          py="4"
+          shadow="1"
+          borderBottomColor="gray.400"
+          px="4"
+        >
+          Mis Ingredientes
+        </Heading>
         {ingredients.map((ingredient) => (
           <Box key={ingredient._id}>
             <Item

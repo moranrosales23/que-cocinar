@@ -3,21 +3,40 @@ import { useEffect, useState } from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ErrorAxios from '_utils/error';
 import { RECIPE } from '_services';
+import { useSelector } from 'react-redux';
 
 const RecipeScreen = ({ route }) => {
   const { id } = route.params;
   const [recipe, setRecipe] = useState({});
+  const { ingredients } = useSelector((state) => state.user);
   const toast = useToast();
 
   useEffect(async () => {
     try {
       const recipes = await RECIPE.find(id);
-      setRecipe(recipes.data.data[0]);
+      const ingredient_format = existsIngredient(recipes.data.data[0]);
+      setRecipe(ingredient_format);
     } catch (error) {
       const err = ErrorAxios(error);
       toast.show({ title: err.error, placement: 'top' });
     }
   }, []);
+
+  function existsIngredient(recipe) {
+    console.log(recipe);
+    const recp = { ...recipe };
+    recp.ingredients = recp.ingredients.map((ingredient) => {
+      ingredient.exists = false;
+      for (const ing of ingredients) {
+        if (ingredient.name.toLowerCase().indexOf(ing.description.toLowerCase()) !== -1) {
+          ingredient.exists = true;
+          break;
+        }
+      }
+      return ingredient;
+    });
+    return recp;
+  }
 
   return (
     <>
@@ -54,7 +73,12 @@ const RecipeScreen = ({ route }) => {
               recipe.ingredients.map((ingrediente, index) => {
                 return (
                   <Flex direction="row" alignItems="center" key={index * 2}>
-                    <Icon as={MaterialIcons} name="done" color="green.600" mr="2"></Icon>
+                    <Icon
+                      as={MaterialIcons}
+                      name={ingrediente.exists ? 'done' : 'close'}
+                      color={ingrediente.exists ? 'green.600' : 'amber.400'}
+                      mr="2"
+                    ></Icon>
                     <Text>
                       {ingrediente.measure} {ingrediente.name}
                     </Text>

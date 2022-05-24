@@ -50,7 +50,7 @@ const FrmRegisterUser = ({ action, fields }) => {
           </Text>
         )}
       </FormControl>
-      <Button size="md" mt="6" bg="#1C3940" onPress={handleButtonClick} disabled={!error.succes}>
+      <Button size="md" mt="6" bg="#1C3940" onPress={handleButtonClick}>
         Registrar
       </Button>
     </>

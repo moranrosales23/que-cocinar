@@ -19,8 +19,6 @@ const InitialScreen = ({ navigation }) => {
       const user = await USER.login(frm);
       await AsyncStorage.setItem('tk_que_cocinar', user.data.data.tk);
       dispatch(loadProfile(user.data.data));
-      console.log('****');
-      console.log(user.data.data.tk, 'token');
       navigation.navigate('Main');
     } catch (error) {
       const err = ErrorAxios(error);
