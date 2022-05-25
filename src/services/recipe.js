@@ -1,6 +1,7 @@
 import API from './base';
 
-const all = ({ page = 1, limit = 10 }) => API.get('recipe', { params: { page, limit } });
+const all = ({ page = 1, limit = 10, search = '' }) =>
+  API.get('recipe', { params: { page, limit, search } });
 
 const find = (recipe) => API.get(`recipe/${recipe}`);
 

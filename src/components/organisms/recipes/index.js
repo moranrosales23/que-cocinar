@@ -6,7 +6,7 @@ import ErrorAxios from '_utils/error';
 import { RECIPE } from '_services';
 import RecipeSkeleton from '_molecules/skeleton/recipe/recipe';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadRecipes } from '../../../store/slices/recipes';
+import { loadRecipes, cleanRecipes } from '../../../store/slices/recipes';
 
 const Recipes = ({ navigation }) => {
   const toast = useToast();
@@ -29,21 +29,25 @@ const Recipes = ({ navigation }) => {
     });
   };
 
-  const searchRecipe = (text) => {
-    console.log(text);
-  };
-
-  useEffect(async () => {
+  const getRecipes = async (search = '', clean = false) => {
     try {
       setloading(true);
-      let recipes = await RECIPE.all({});
+      let recipes = await RECIPE.all({ search });
       recipes = setFavorites(recipes.data.data);
-      dispatch(loadRecipes(recipes));
+      clean ? dispatch(cleanRecipes(recipes)) : dispatch(loadRecipes(recipes));
       setloading(false);
     } catch (error) {
       const err = ErrorAxios(error);
       toast.show({ title: err.error, placement: 'top' });
     }
+  };
+
+  const searchRecipe = (text) => {
+    getRecipes(text, true);
+  };
+
+  useEffect(() => {
+    getRecipes();
     return () => {
       setloading(false);
     };

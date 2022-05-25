@@ -9,7 +9,7 @@ const Favorites = ({ navigation }) => {
     <ScrollView>
       <Heading
         size="md"
-        mt="4"
+        mt="8"
         mb="4"
         bg="white"
         py="4"

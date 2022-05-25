@@ -27,14 +27,14 @@ const FrmLogin = ({ frm, setFrm }) => {
 
   return (
     <>
-      <FormControl isRequired mb="4">
+      <FormControl isRequired mb="2">
         <FormControl.Label>Email</FormControl.Label>
         <Input
           keyboardType="email-address"
           onChangeText={(text) => handleInputChange('email', text)}
         />
         {error.hasOwnProperty('email') && (
-          <Text size="xs" color="amber.500" height="6" width="100%">
+          <Text size="xs" color="amber.500" height="5" width="100%">
             {error.email.message}
           </Text>
         )}
@@ -43,7 +43,7 @@ const FrmLogin = ({ frm, setFrm }) => {
         <FormControl.Label>Password</FormControl.Label>
         <Input type="password" onChangeText={(text) => handleInputChange('password', text)} />
         {error.hasOwnProperty('password') && (
-          <Text size="xs" color="amber.500" height="6" width="100%">
+          <Text size="xs" color="amber.500" height="5" width="100%">
             {error.password.message}
           </Text>
         )}

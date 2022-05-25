@@ -14,6 +14,12 @@ const recipeSlice = createSlice({
         recipes: [...state.recipes, ...action.payload],
       };
     },
+    cleanRecipes: (state, action) => {
+      return {
+        ...state,
+        recipes: [...action.payload],
+      };
+    },
     updateFavorite: (state, action) => {
       return {
         ...state,
@@ -23,6 +29,6 @@ const recipeSlice = createSlice({
   },
 });
 
-export const { loadRecipes, updateFavorite } = recipeSlice.actions;
+export const { loadRecipes, updateFavorite, cleanRecipes } = recipeSlice.actions;
 
 export default recipeSlice.reducer;

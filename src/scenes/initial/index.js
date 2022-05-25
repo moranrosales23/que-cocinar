@@ -32,11 +32,11 @@ const InitialScreen = ({ navigation }) => {
         minH: '100%',
       }}
     >
-      <Flex direction="column" justify="space-around" flexGrow="1" bg="white">
+      <Flex direction="column" justify="space-around" flexGrow="1" bg="white" flexWrap="wrap">
         <Image source={bandera} alt="bandera" resizeMode={'contain'} width="100%" />
 
         <Box>
-          <Logo height="44%" />
+          <Logo height="25%" />
           <Box ml="4" mr="4" mt="4">
             <FrmLogin setFrm={setFrm} frm={frm} />
           </Box>

@@ -48,10 +48,10 @@ const IngredientsScreen = () => {
 
   return (
     <>
-      <Box px="4" position="relative" height="95%">
+      <Box position="relative" height="95%">
         <Heading
           size="md"
-          mt="4"
+          mt="8"
           mb="4"
           bg="white"
           py="4"
@@ -62,7 +62,7 @@ const IngredientsScreen = () => {
           Mis Ingredientes
         </Heading>
         {ingredients.map((ingredient) => (
-          <Box key={ingredient._id}>
+          <Box px="4" key={ingredient._id}>
             <Item
               remove={remove}
               edit={edit}
@@ -86,7 +86,7 @@ const IngredientsScreen = () => {
           bottom="5"
           px="6"
           py="6"
-          borderRadius="50%"
+          borderRadius={50}
           position="absolute"
           onPress={openRegister}
         />
